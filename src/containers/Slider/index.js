@@ -17,10 +17,12 @@ const Slider = () => {
     }, 5000);
     return () => clearTimeout(timer);
   }, [index]);
+  let compteur = 0;
   return (
     <div className="SlideCardList">
-      {byDateDesc?.map((event, idx) => (
-        <div key={event.title} className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}>
+      {byDateDesc?.map((event, idx) => {
+        compteur+=1;
+        return(<div key={compteur} className={`SlideCard SlideCard--${index === idx ? "display" : "hide"}`}>
           <img src={event.cover} alt="forum" />
           <div className="SlideCard__descriptionContainer">
             <div className="SlideCard__description">
@@ -29,19 +31,20 @@ const Slider = () => {
               <div>{getMonth(new Date(event.date))}</div>
             </div>
           </div>
-        </div>
-      ))}
+        </div>)
+})}
       <div className="SlideCard__paginationContainer">
         <div className="SlideCard__pagination">
-          {byDateDesc?.map((event, radioIdx) => (
-            <input
-              key={event.title}
+          {byDateDesc?.map((event, radioIdx) => {
+            compteur+=1;
+         return (  <input
+              key={compteur}
               type="radio"
               name="radio-button"
               checked={index === radioIdx}
               onChange={()=>{setIndex(radioIdx)}}
-            />
-          ))}
+            />)
+})}
         </div>
       </div>
     </div>
