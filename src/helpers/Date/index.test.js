@@ -23,7 +23,7 @@ describe("Date helper",
                         ["novembre", "2022-11-01"],
                         ["décembre", "2022-12-01"],
                     ]
-                )(`the function return %s for %i as date`, (input, date) => {
+                )(`the function return %s for %s as date`, (input, date) => {
                     expect(getMonth(new Date(date))).toBe(input);
                 })
             
